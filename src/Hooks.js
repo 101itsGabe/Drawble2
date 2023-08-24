@@ -132,8 +132,8 @@ export function useOnDraw(onDraw) {
     const ctx = canvasRef.current.getContext("2d");
     let popCount = 0;
     //Going though the history array and popping from the latest start index to the the end
-    console.log(historyStartIndex.current);
-    console.log(historyEndIndex.current);
+    //console.log(historyStartIndex.current);
+    //console.log(historyEndIndex.current);
     for (let i = historyStartIndex.current;i < historyEndIndex.current;i++) {
       history.current.pop();
       popCount+= 1;
@@ -144,8 +144,8 @@ export function useOnDraw(onDraw) {
     for (let i = 0; i < history.current.length - 1; i++) {
       const startPoint = history.current[i].data.start;
       const endPoint = history.current[i].data.end;
-      console.log("Start: " + startPoint.x + " " + startPoint.y);
-      console.log("End:" + endPoint.x + " " + endPoint.y);
+      //console.log("Start: " + startPoint.x + " " + startPoint.y);
+      //console.log("End:" + endPoint.x + " " + endPoint.y);
       drawLine(startPoint, endPoint, ctx);
     }
 

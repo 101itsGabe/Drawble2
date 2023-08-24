@@ -11,6 +11,7 @@ import {
   useNavigate,
 } from "react-router-dom";
 import { setUserId } from "firebase/analytics";
+import { FeedPage, listOfMessages } from "./FeedPage";
 function UserPage() {
   const [allMessages, setAllMessages] = useState([]); // Use useState
   const navigate = useNavigate();
@@ -24,7 +25,11 @@ function UserPage() {
       const messagesData = [];
       querySnapshot.forEach((doc) => {
         if (doc.data().user === auth.currentUser.email){
-          messagesData.push(doc.data());
+          const customMessage ={
+            id: doc.id,
+            data: doc.data(),
+          }
+          messagesData.push(customMessage);
         }
       });
 
@@ -50,28 +55,37 @@ function UserPage() {
         }}>Change UserName</button>
         <p>{curName}</p>
         <button onClick={() => {navigate("/")}}>Home</button>
-        
         <div className="scrollableContainer">
-          <ListOfUserMessages messages={allMessages}/> 
+          <ListOfUserMessages messages={allMessages} navigate={navigate} /> 
         </div> 
     </>
   )
 }
 
-function ListOfUserMessages({messages}) {
+function GoToPage(docId,navigate){
+  //const navigate = useNavigate();
+  //console.log(docId);
+  navigate("/message/" + docId);
+}
+
+
+function ListOfUserMessages({messages, navigate}) {
   //const navigate = useNavigate();
   return (
     <>
       <ol className="LOM">
         {messages?.map((m) => (
-          <li>
-            <p className="email">{m.user}</p>
-            <img className="canvasPrint" src={m.canvasData} />
-            {m.message}
-          </li>
+            <li>
+          <button onClick={() => GoToPage(m.id,navigate)}>
+              <p className="userName">{m.data.user}</p>
+              <img className="canvasPrint" src={m.data.canvasData} />
+              <div className="message">{m.data.message}</div>
+             </button>
+             </li>
         ))}
       </ol>
     </>
   );
 }
-export { UserPage, ListOfUserMessages };
+
+export { UserPage};

@@ -52,7 +52,7 @@ export function DrawPage() {
     };
     try {
       await addDoc(curcollection, jsonToSave);
-      console.log("saved");
+      //console.log("saved");
       clearCanvas();
       document.getElementById("message").value = "";
     } catch (e) {
@@ -69,12 +69,14 @@ export function DrawPage() {
           ref={setCanvasRef}
         ></canvas>
       </div>
+      <div className="btns">
       <button className="clearBtn" onClick={clearCanvas}>
         Clear
       </button>
       <button className="clearBtn" onClick={undo}>
         Undo
       </button>
+      </div>
       <br />
       <textarea
         className="message"

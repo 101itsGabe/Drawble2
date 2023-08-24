@@ -24,6 +24,7 @@ import {
 import { DrawPage } from "./Pages/DrawPage";
 import { UserPage } from "./Pages/UserPage";
 import { UsernamePage } from "./Pages/UsernamePage";
+import { CurrentMessagePage } from "./Pages/CurrentMessagePage";
 
 function App() {
   const [user] = useAuthState(auth);
@@ -94,6 +95,7 @@ function App() {
         <header className="AppHeader"></header>
       </div>
       <Routes>
+        <Route path="/message/:messageId" element={<CurrentMessagePage/>} />
         <Route path="/username" element={<UsernamePage />} />
         <Route path="/draw" element={<DrawPage />} />
         <Route
@@ -116,7 +118,7 @@ function App() {
                       </Link>
                     </div>
                     <div className="scrollableContainer">
-                      <FeedPage />
+                      <FeedPage/>
                     </div>
                     <button
                       className="signoutBtn"
