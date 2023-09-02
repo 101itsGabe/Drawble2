@@ -47,6 +47,8 @@ import {
 
       return(<>
         <p>{message.user}</p>
-        <p>yer</p>
+        <img src={message.canvasData} />
+        <p>{message.message}</p>
+        Likes: {message.likeCounter}
       </>)
     }

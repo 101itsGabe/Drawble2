@@ -49,6 +49,7 @@ export function DrawPage() {
       message: messageValue,
       user: user.email,
       timestamp: serverTimestamp(),
+      likeCounter: 0,
     };
     try {
       await addDoc(curcollection, jsonToSave);

@@ -108,11 +108,12 @@ function App() {
                 </>
               ) : (
                 <>
-                  <div className="mainContent">
+                  
                     <div className="topOfPage">
                       <Link to="/draw">
                         <img className="drawIcon" src={require("./images/draw4.png")}></img>
                       </Link>
+                      <p>Give it a second to load!</p>
                       <Link to="/userpage">
                         <img src={user.photoURL} />
                       </Link>
@@ -128,7 +129,7 @@ function App() {
                     >
                       Sign Out
                     </button>
-                  </div>
+                  
                 </>
               )
             ) : (
@@ -146,5 +147,8 @@ function App() {
     </Router>
   );
 }
+
+
+
 
 export default App;

@@ -10,6 +10,7 @@ import {
   updateDoc,
   getDocs,
   serverTimestamp,
+  where
 } from "firebase/firestore";
 import "firebase/compat/firestore";
 import "firebase/compat/auth";
@@ -18,6 +19,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
+/*
 const firebaseConfig = {
   apiKey: "AIzaSyBOmaW7EjNE4SYY3K7g9HJ5NJy-lRo9epo",
   authDomain: "picto-chat-24b2b.firebaseapp.com",
@@ -27,6 +29,7 @@ const firebaseConfig = {
   appId: "1:650107256571:web:87d95841159a4c40cd7a5e",
   measurementId: "G-PTKRJ4LP4F",
 };
+*/
 
 // Initialize Firebase
 const app = initializeApp({
@@ -47,6 +50,7 @@ export {
   firestore,
   curcollection,
   userCollection,
+  collection,
   addDoc,
   updateDoc,
   auth,
@@ -54,4 +58,5 @@ export {
   useAuthState,
   getDocs,
   serverTimestamp,
+  where
 };
